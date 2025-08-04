@@ -32,8 +32,8 @@ export default function Header() {
       {/* Top Bar */}
       <div className="bg-gray-900 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-sm space-y-2 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center">
                 <Phone size={14} className="mr-2" />
                 <span>+91 9446891522</span>
@@ -44,10 +44,9 @@ export default function Header() {
               </div>
               <div className="flex items-center">
                 <Mail size={14} className="mr-2" />
-                <span>tjconsultantsmtdy@gmail.com</span>
+                <span className="text-xs sm:text-sm">tjconsultantsmtdy@gmail.com</span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -159,7 +158,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="w-full bg-gray-900 text-white px-4 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 inline-block text-center"
               >
-                Get Free Consultation
+                Visit Us on Google Maps
               </a>
             </div>
           </div>
