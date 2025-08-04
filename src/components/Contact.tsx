@@ -14,33 +14,36 @@ export default function Contact() {
 
     const formData = new FormData(e.currentTarget)
     
-    try {
-      const response = await fetch('https://formspree.io/f/xrblawlz', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone'),
-          service: formData.get('service'),
-          message: formData.get('message'),
-          _subject: `New Contact Form Submission from ${formData.get('name')}`,
-        }),
-      })
+         try {
+       const response = await fetch('https://formspree.io/f/xrblawlz', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           name: formData.get('name'),
+           email: formData.get('email'),
+           phone: formData.get('phone'),
+           service: formData.get('service'),
+           message: formData.get('message'),
+           _subject: `New Contact Form Submission from ${formData.get('name')}`,
+         }),
+       })
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        e.currentTarget.reset()
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
+       // Formspree returns 200 for successful submissions
+       if (response.status === 200 || response.status === 201) {
+         setSubmitStatus('success')
+         e.currentTarget.reset()
+       } else {
+         console.error('Form submission failed:', response.status, response.statusText)
+         setSubmitStatus('error')
+       }
+     } catch (error) {
+       console.error('Form submission error:', error)
+       setSubmitStatus('error')
+     } finally {
+       setIsSubmitting(false)
+     }
   }
 
 
@@ -121,27 +124,27 @@ export default function Contact() {
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="Your full name"
-                  />
+                                     <input
+                     type="text"
+                     id="name"
+                     name="name"
+                     required
+                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                     placeholder="Your full name"
+                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="your.email@example.com"
-                  />
+                                     <input
+                     type="email"
+                     id="email"
+                     name="email"
+                     required
+                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                     placeholder="your.email@example.com"
+                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -149,35 +152,35 @@ export default function Contact() {
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="+91 9876543210"
-                  />
+                                     <input
+                     type="tel"
+                     id="phone"
+                     name="phone"
+                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                     placeholder="+91 9876543210"
+                   />
                 </div>
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                     Service Required
                   </label>
-                  <select
-                    id="service"
-                    name="service"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  >
-                    <option value="">Select a service</option>
-                                         <option value="land-agreement">Land Agreement Drafting</option>
-                     <option value="wills-trusts">Wills & Trusts</option>
-                     <option value="power-of-attorney">Power of Attorney</option>
-                     <option value="rectification-deeds">Rectification Deeds</option>
-                     <option value="property-documentation">Property Documentation</option>
-                     <option value="legal-consultation">Legal Consultation</option>
-                  </select>
+                                     <select
+                     id="service"
+                     name="service"
+                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                   >
+                     <option value="">Select a service</option>
+                                          <option value="land-agreement">Land Agreement Drafting</option>
+                      <option value="wills-trusts">Wills & Trusts</option>
+                      <option value="power-of-attorney">Power of Attorney</option>
+                      <option value="rectification-deeds">Rectification Deeds</option>
+                      <option value="property-documentation">Property Documentation</option>
+                      <option value="legal-consultation">Legal Consultation</option>
+                   </select>
                 </div>
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
                   Message *
                 </label>
                                                      <textarea
@@ -185,7 +188,7 @@ export default function Contact() {
                     name="message"
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
                     placeholder="Tell us about your property document needs..."
                   />
               </div>
