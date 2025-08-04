@@ -19,7 +19,7 @@ export default function About() {
             
             <div className="space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed">
-              With decades of combined experience in Kerala’s property documentation landscape, T&J Document Consultants is led by seasoned professionals-<br></br> Thomas John (Retd. District Registrar) and Johnson V J (Retd. Sub Registrar). We specialize in guiding individuals and families through the legal intricacies of property documentation, ensuring compliance with registration laws and offering peace of mind.
+              With decades of combined experience in Kerala's property documentation landscape, T&J Document Consultants is led by seasoned professionals-<br></br> <span className="font-semibold text-gray-900">Thomas John (Retd. District Registrar)</span> and <span className="font-semibold text-gray-900">Johnson V J (Retd. Sub Registrar)</span>. We specialize in guiding individuals and families through the legal intricacies of property documentation, ensuring compliance with registration laws and offering peace of mind.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Our team combines deep knowledge of Kerala's property laws with 
