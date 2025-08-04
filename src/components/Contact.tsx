@@ -30,14 +30,20 @@ export default function Contact() {
          }),
        })
 
-       // Formspree returns 200 for successful submissions
-       if (response.status === 200 || response.status === 201) {
-         setSubmitStatus('success')
-         e.currentTarget.reset()
-       } else {
-         console.error('Form submission failed:', response.status, response.statusText)
-         setSubmitStatus('error')
-       }
+       
+        
+        // Formspree returns 200 for successful submissions
+        if (response.status === 200 || response.status === 201) {
+          setSubmitStatus('success')
+          // Use a more reliable way to reset the form
+          const form = e.currentTarget
+          if (form) {
+            form.reset()
+          }
+        } else {
+          console.error('Form submission failed:', response.status, response.statusText)
+          setSubmitStatus('error')
+        }
      } catch (error) {
        console.error('Form submission error:', error)
        setSubmitStatus('error')
