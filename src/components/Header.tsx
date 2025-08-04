@@ -29,27 +29,16 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-gray-900 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-sm space-y-2 sm:space-y-0">
-            <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
-              <div className="flex items-center">
-                <Phone size={14} className="mr-2" />
-                <span>+91 9446891522</span>
-              </div>
-              <div className="flex items-center">
-                <Phone size={14} className="mr-2" />
-                <span>+91 9400515292</span>
-              </div>
-              <div className="flex items-center">
-                <Mail size={14} className="mr-2" />
-                <span className="text-xs sm:text-sm">tjconsultantsmtdy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+             {/* Top Bar */}
+       <div className="bg-gray-900 text-white py-2">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="flex justify-center items-center text-sm">
+             <div className="text-center">
+               <span className="text-white font-medium">Thomas & Johnson Document Consultants</span>
+             </div>
+           </div>
+         </div>
+       </div>
 
       {/* Main Header */}
       <header className={`bg-white shadow-sm sticky top-0 z-50 transition-all duration-300 ${
