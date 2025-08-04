@@ -32,7 +32,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 mb-8 max-w-md leading-relaxed">
-              Kerala's trusted property document consultants helping individuals and families 
+              Trusted property document consultants in Wayanad helping individuals, families and institutions
               navigate property documentation with expertise and legal compliance.
             </p>
             <div className="flex space-x-4 items-center">

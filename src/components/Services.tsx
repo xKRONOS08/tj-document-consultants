@@ -7,37 +7,37 @@ const services = [
     icon: FileText,
     title: 'Land Agreement Drafting',
     description: 'Professional drafting of land sale agreements, lease agreements, and property transfer documents.',
-    features: ['Sale agreements', 'Lease agreements', 'Property transfers', 'Land partition deeds']
+    features: ['Sale deeds', 'Lease agreements','Gift and Settlement', 'partition deeds']
   },
   {
     icon: Shield,
     title: 'Wills & Trusts',
-    description: 'Expert preparation of wills, trusts, and estate planning documents for property succession.',
-    features: ['Will preparation', 'Trust documents', 'Estate planning', 'Succession planning']
+    description: 'Expert preparation of wills, trusts, and legal documents for smooth property succession.',
+    features: ['Will preparation', 'Trust documents', 'Revocation or modification of wills', 'Succession planning']
   },
   {
     icon: Users,
     title: 'Power of Attorney',
     description: 'Comprehensive power of attorney services for property management and legal representation.',
-    features: ['General POA', 'Special POA', 'Property management', 'Legal representation']
+    features: ['General Power Of Attorney', 'Special Power Of Attorney', 'Property management', 'Notarization support']
   },
   {
     icon: Briefcase,
     title: 'Rectification Deeds',
     description: 'Professional rectification and correction of property documents and legal instruments.',
-    features: ['Document corrections', 'Error rectification', 'Legal validation', 'Court compliance']
+    features: ['Document corrections', 'Error rectification', 'Legal validation', 'Re-registration support']
   },
   {
     icon: Globe,
     title: 'Property Documentation',
     description: 'Complete property documentation services including title verification and legal compliance.',
-    features: ['Title verification', 'Document preparation', 'Legal compliance', 'Registration support']
+    features: ['Title verification', 'Document Drafting Support', 'Legal compliance guidance', 'Registration support']
   },
   {
     icon: Award,
     title: 'Legal Consultation',
     description: 'Expert legal consultation for property matters with deep understanding of Kerala laws.',
-    features: ['Legal advice', 'Document review', 'Compliance guidance', 'Court procedures']
+    features: ['Legal advice', 'Document review', 'Compliance guidance', 'Registration procedures']
   }
 ]
 

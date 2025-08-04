@@ -75,7 +75,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Property Documents</h3>
-                  <p className="text-gray-600">Expert drafting of land agreements, deeds, and property documentation with legal compliance.</p>
+                  <p className="text-gray-600">Expert drafting of all types of land agreements, deeds, and property documentation in Malayalam and English.</p>
                 </div>
               </div>
             </div>
