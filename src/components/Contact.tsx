@@ -15,9 +15,19 @@ export default function Contact() {
     const formData = new FormData(e.currentTarget)
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formspree.io/f/xrblawlz', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          service: formData.get('service'),
+          message: formData.get('message'),
+          _subject: `New Contact Form Submission from ${formData.get('name')}`,
+        }),
       })
 
       if (response.ok) {
