@@ -156,7 +156,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Support
 
 For support or questions, please contact:
-- Email: info@docconsult.com
+- Email: tjconsultantsmtdy@gmail.com
 - Phone: +1 (555) 123-4567
 
 ---
