@@ -66,34 +66,68 @@ export default function Services() {
           </p>
         </div>
 
+        {/* Mobile: Horizontal Scroll, Desktop: Grid */}
         <div
           ref={gridRef}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal ${gridVisible ? 'visible' : ''}`}
+          className={`scroll-reveal ${gridVisible ? 'visible' : ''}`}
         >
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
-            >
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 hover:bg-gray-200 transition-colors duration-300">
-                <service.icon className="w-8 h-8 text-gray-700" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+          {/* Mobile horizontal scroll container */}
+          <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
+            <div className="flex gap-6 min-w-max">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 w-[280px] flex-shrink-0"
+                >
+                  <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4 hover:bg-gray-200 transition-colors duration-300">
+                    <service.icon className="w-7 h-7 text-gray-700" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Desktop grid layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+              >
+                <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 hover:bg-gray-200 transition-colors duration-300">
+                  <service.icon className="w-8 h-8 text-gray-700" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="text-center mt-16">
