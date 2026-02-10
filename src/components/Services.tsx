@@ -1,13 +1,14 @@
 'use client'
 
 import { FileText, Shield, Users, Briefcase, Globe, Award } from 'lucide-react'
+import { useScrollAnimation } from './useScrollAnimation'
 
 const services = [
   {
     icon: FileText,
     title: 'Land Agreement Drafting',
     description: 'Professional drafting of land sale agreements, lease agreements, and property transfer documents.',
-    features: ['Sale deeds', 'Lease agreements','Gift and Settlement', 'partition deeds']
+    features: ['Sale deeds', 'Lease agreements', 'Gift and Settlement', 'partition deeds']
   },
   {
     icon: Shield,
@@ -42,10 +43,16 @@ const services = [
 ]
 
 export default function Services() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 })
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 })
+
   return (
     <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 scroll-reveal ${headerVisible ? 'visible' : ''}`}
+        >
           <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium mb-4">
             <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
             Our Services
@@ -59,10 +66,16 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={gridRef}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal ${gridVisible ? 'visible' : ''}`}
+        >
           {services.map((service, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+            <div
+              key={index}
+              className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 hover:bg-gray-200 transition-colors duration-300">
                 <service.icon className="w-8 h-8 text-gray-700" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -73,7 +86,7 @@ export default function Services() {
               </p>
               <ul className="space-y-3">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                  <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
                     <div className="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
                     {feature}
                   </li>
@@ -84,14 +97,14 @@ export default function Services() {
         </div>
 
         <div className="text-center mt-16">
-          <button 
+          <button
             onClick={() => {
               const element = document.getElementById('contact')
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' })
               }
             }}
-            className="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-all duration-200"
+            className="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Get Started Today
           </button>
@@ -99,4 +112,4 @@ export default function Services() {
       </div>
     </section>
   )
-} 
+}

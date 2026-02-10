@@ -1,8 +1,12 @@
 'use client'
 
 import { FileText, CheckCircle, Clock, ArrowRight, Play } from 'lucide-react'
+import { useScrollAnimation } from './useScrollAnimation'
 
 export default function Hero() {
+  const { ref: leftContentRef, isVisible: leftVisible } = useScrollAnimation({ threshold: 0.2 })
+  const { ref: rightContentRef, isVisible: rightVisible } = useScrollAnimation({ threshold: 0.2 })
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -15,34 +19,37 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div
+            ref={leftContentRef}
+            className={`space-y-8 scroll-reveal ${leftVisible ? 'visible' : ''}`}
+          >
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+              <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium opacity-0 animate-fade-in">
                 <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                 Leading Property Document Consultants in Wayanad
               </div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight opacity-0 animate-fade-in delay-100">
                 Expert Property
                 <span className="text-gray-600"> Documentation </span>
                 Services
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Professional property document services in Mananthavady,Wayanad. Specializing in land agreements, wills, 
+              <p className="text-xl text-gray-600 leading-relaxed opacity-0 animate-fade-in delay-200">
+                Professional property document services in Mananthavady,Wayanad. Specializing in land agreements, wills,
                 power of attorney, and property documentation with deep understanding of Kerala's legal framework.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in delay-300">
+              <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center justify-center group"
+                className="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center group"
               >
                 Consult with Us
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('services')}
-                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 flex items-center justify-center"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-900 hover:bg-gray-50 hover:shadow-md hover:scale-105 transition-all duration-300 flex items-center justify-center"
               >
                 <Play size={20} className="mr-2" />
                 View Services
@@ -50,16 +57,16 @@ export default function Hero() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-              <div className="text-center">
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200 opacity-0 animate-fade-in delay-400">
+              <div className="text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">500+</div>
                 <div className="text-sm text-gray-600">Happy Clients</div>
               </div>
-              <div className="text-center">
+              <div className="text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">1000+</div>
                 <div className="text-sm text-gray-600">Documents</div>
               </div>
-              <div className="text-center">
+              <div className="text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">24h</div>
                 <div className="text-sm text-gray-600">Turnaround</div>
               </div>
@@ -67,10 +74,13 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Features */}
-          <div className="space-y-6">
-            <div className="bg-gray-50 p-8 rounded-2xl">
+          <div
+            ref={rightContentRef}
+            className={`space-y-6 scroll-reveal ${rightVisible ? 'visible' : ''}`}
+          >
+            <div className="bg-gray-50 p-8 rounded-2xl opacity-0 animate-fade-in delay-100 hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="bg-white p-3 rounded-lg shadow-sm">
+                <div className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                   <FileText className="w-6 h-6 text-gray-700" />
                 </div>
                 <div>
@@ -80,9 +90,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-2xl">
+            <div className="bg-gray-50 p-8 rounded-2xl opacity-0 animate-fade-in delay-200 hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="bg-white p-3 rounded-lg shadow-sm">
+                <div className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                   <CheckCircle className="w-6 h-6 text-gray-700" />
                 </div>
                 <div>
@@ -92,9 +102,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-2xl">
+            <div className="bg-gray-50 p-8 rounded-2xl opacity-0 animate-fade-in delay-300 hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="bg-white p-3 rounded-lg shadow-sm">
+                <div className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                   <Clock className="w-6 h-6 text-gray-700" />
                 </div>
                 <div>
@@ -108,4 +118,4 @@ export default function Hero() {
       </div>
     </section>
   )
-} 
+}

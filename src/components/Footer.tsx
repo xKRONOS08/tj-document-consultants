@@ -20,9 +20,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 mr-4">
-                <img 
-                  src="/logo.png" 
-                  alt="T&J Document Consultants Logo" 
+                <img
+                  src="/logo.png"
+                  alt="T&J Document Consultants Logo"
                   className="w-full h-full object-contain rounded-lg"
                 />
               </div>
@@ -36,11 +36,11 @@ export default function Footer() {
               navigate property documentation with expertise and legal compliance.
             </p>
             <div className="flex space-x-4 items-center">
-              <a 
+              <a
                 href="https://maps.app.goo.gl/UBvgArcyowDNYFH48"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer"
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 hover:scale-110 transition-all duration-300 cursor-pointer"
               >
                 <MapPin size={18} />
               </a>
@@ -53,15 +53,15 @@ export default function Footer() {
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
                 >
                   Land Agreement Drafting
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection('services')}
                   className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
                 >
@@ -69,7 +69,7 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection('services')}
                   className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
                 >
@@ -77,7 +77,7 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection('services')}
                   className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
                 >
@@ -85,7 +85,7 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => scrollToSection('services')}
                   className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
                 >
@@ -99,10 +99,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
             <div className="space-y-3">
-                             <div className="flex items-center">
-                 <Mail size={16} className="text-gray-400 mr-2" />
-                 <span className="text-gray-300 text-sm">tjconsultantsmtdy@gmail.com</span>
-               </div>
+              <div className="flex items-center">
+                <Mail size={16} className="text-gray-400 mr-2" />
+                <span className="text-gray-300 text-sm">tjconsultantsmtdy@gmail.com</span>
+              </div>
               <div className="flex items-center">
                 <Phone size={16} className="text-gray-400 mr-2" />
                 <span className="text-gray-300 text-sm">+91 9446891522 | +91 9400515292
@@ -111,8 +111,8 @@ export default function Footer() {
               <div className="flex items-start">
                 <MapPin size={16} className="text-gray-400 mr-2 mt-1" />
                 <span className="text-gray-300 text-sm">
-                Near Mananthavady Municipal Bus Stand,
-                Mananthavady, Kerala 670645
+                  Near Mananthavady Municipal Bus Stand,
+                  Mananthavady, Kerala 670645
                 </span>
               </div>
             </div>
@@ -126,19 +126,19 @@ export default function Footer() {
               © 2024 T&J Document Consultants. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <button 
+              <button
                 onClick={() => console.log('Privacy Policy clicked')}
-                className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
+                className="text-gray-400 hover:text-white text-sm transition-all duration-200 cursor-pointer hover:scale-105"
               >
                 Privacy Policy
               </button>
-              <button 
+              <button
                 onClick={() => console.log('Terms of Service clicked')}
                 className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
               >
                 Terms of Service
               </button>
-              <button 
+              <button
                 onClick={() => console.log('Cookie Policy clicked')}
                 className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
               >

@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'T&J Document Consultants - Kerala Property Document Services',
+  title: 'T&J Document Consultants',
   description: 'Expert property document consultancy services in Kerala. Specializing in land agreements, wills, power of attorney, rectification deeds, and property documentation.',
   keywords: 'property documents kerala, land agreement drafting, wills and trusts, power of attorney, rectification deeds, property documentation, kerala document consultancy',
 }
