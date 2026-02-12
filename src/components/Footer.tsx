@@ -63,7 +63,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
                 >
                   Wills & Trusts
                 </button>
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
                 >
                   Power of Attorney
                 </button>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
                 >
                   Rectification Deeds
                 </button>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
                 >
                   Property Documentation
                 </button>
