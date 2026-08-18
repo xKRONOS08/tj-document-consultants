@@ -16,7 +16,7 @@ export default function About() {
             className={`space-y-8 scroll-reveal ${leftVisible ? 'visible' : ''}`}
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+              <div className="stamp-badge inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
                 <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                 About Us
               </div>
@@ -70,28 +70,28 @@ export default function About() {
             className={`grid grid-cols-2 gap-6 scroll-reveal ${rightVisible ? 'visible' : ''}`}
           >
             <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
+              <div className="ink-seal bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
                 <Users className="w-8 h-8 text-gray-700" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">500+</h3>
               <p className="text-gray-600 font-medium">Happy Clients</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
+              <div className="ink-seal bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
                 <Award className="w-8 h-8 text-gray-700" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">1000+</h3>
               <p className="text-gray-600 font-medium">Documents Delivered</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
+              <div className="ink-seal bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
                 <Clock className="w-8 h-8 text-gray-700" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">24h</h3>
               <p className="text-gray-600 font-medium">Average Turnaround</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
+              <div className="ink-seal bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 hover:bg-gray-200 transition-colors duration-300">
                 <CheckCircle className="w-8 h-8 text-gray-700" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">99%</h3>

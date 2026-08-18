@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, User, Briefcase, MessageSquare, ChevronDown } from 'lucide-react'
 import { useScrollAnimation } from './useScrollAnimation'
+import OfficeStatus from './OfficeStatus'
 
 export default function Contact() {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 })
@@ -158,127 +159,182 @@ export default function Contact() {
                 <p>Sunday: Closed</p>
               </div>
             </div>
+
+            <div className="mt-8 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+              <iframe
+                title="T&J Document Consultants location"
+                src="https://www.google.com/maps?q=T%26J+Document+Consultants,+Mananthavady,+Wayanad,+Kerala&ll=11.797687,76.0053841&z=16&output=embed"
+                width="100%"
+                height="280"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-              Send us a Message
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-400 transition-colors duration-200"
-                    placeholder="Your full name"
-                  />
+          <div className="relative">
+            {/* Decorative gradient backdrop so the glass card has something to show through */}
+            <div className="absolute -inset-6 -z-10 overflow-hidden rounded-3xl">
+              <div className="absolute -top-10 -left-10 w-56 h-56 bg-gray-300 rounded-full blur-3xl opacity-40" />
+              <div className="absolute -bottom-10 -right-10 w-56 h-56 bg-primary-200 rounded-full blur-3xl opacity-40" />
+            </div>
+
+            <div className="bg-white/60 backdrop-blur-xl border border-white/60 shadow-xl p-8 rounded-2xl">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+                Send us a Message
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-300 transition-colors duration-200"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-300 transition-colors duration-200"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-300 transition-colors duration-200"
+                        placeholder="+91 9876543210"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Service Required
+                    </label>
+                    <div className="relative">
+                      <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                      <select
+                        id="service"
+                        name="service"
+                        className="w-full pl-10 pr-10 py-3 bg-white/80 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-300 transition-colors duration-200 appearance-none"
+                      >
+                        <option value="">Select a service</option>
+                        <option value="land-agreement">Land Agreement Drafting</option>
+                        <option value="wills-trusts">Wills & Trusts</option>
+                        <option value="power-of-attorney">Power of Attorney</option>
+                        <option value="rectification-deeds">Rectification Deeds</option>
+                        <option value="property-documentation">Property Documentation</option>
+                        <option value="legal-consultation">Legal Consultation</option>
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    </div>
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                    Message *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                    placeholder="your.email@example.com"
-                  />
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 hover:border-gray-300 transition-colors duration-200"
+                      placeholder="Tell us about your property document needs..."
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                    placeholder="+91 9876543210"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Required
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="land-agreement">Land Agreement Drafting</option>
-                    <option value="wills-trusts">Wills & Trusts</option>
-                    <option value="power-of-attorney">Power of Attorney</option>
-                    <option value="rectification-deeds">Rectification Deeds</option>
-                    <option value="property-documentation">Property Documentation</option>
-                    <option value="legal-consultation">Legal Consultation</option>
-                  </select>
-                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-primary-600 hover:bg-primary-700 hover:shadow-lg hover:scale-105 text-white'
+                    }`}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span className="text-green-800">Message sent successfully! We'll get back to you soon.</span>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center">
+                    <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
+                    <span className="text-red-800">Failed to send message. Please try again or contact us directly.</span>
+                  </div>
+                )}
+              </form>
+            </div>
+
+            <div className="mt-6">
+              <OfficeStatus />
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/UBvgArcyowDNYFH48"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 bg-white/60 backdrop-blur-xl border border-white/60 shadow-xl p-6 rounded-2xl flex items-center gap-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+            >
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 flex-shrink-0">
+                <MapPin className="w-5 h-5 text-gray-700" />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                  placeholder="Tell us about your property document needs..."
-                />
+                <div className="font-semibold text-gray-700">Visit Us on Google Maps</div>
+                <div className="text-sm text-gray-500">Get directions to our Mananthavady office</div>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${isSubmitting
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-primary-600 hover:bg-primary-700 hover:shadow-lg hover:scale-105 text-white'
-                  }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
-                  </>
-                )}
-              </button>
-
-              {/* Success Message */}
-              {submitStatus === 'success' && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
-                  <span className="text-green-800">Message sent successfully! We'll get back to you soon.</span>
-                </div>
-              )}
-
-              {/* Error Message */}
-              {submitStatus === 'error' && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center">
-                  <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                  <span className="text-red-800">Failed to send message. Please try again or contact us directly.</span>
-                </div>
-              )}
-            </form>
+            </a>
           </div>
         </div>
       </div>
     </section>
   )
-} 
+}

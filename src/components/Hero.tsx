@@ -1,6 +1,6 @@
 'use client'
 
-import { FileText, CheckCircle, Clock, ArrowRight, Play } from 'lucide-react'
+import { FileText, CheckCircle, Clock, ArrowRight, Play, Star } from 'lucide-react'
 import { useScrollAnimation } from './useScrollAnimation'
 
 export default function Hero() {
@@ -15,7 +15,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="bg-white py-20 lg:py-32">
+    <section id="home" className="bg-white py-20 lg:py-32 paper-texture">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -24,7 +24,7 @@ export default function Hero() {
             className={`space-y-8 scroll-reveal ${leftVisible ? 'visible' : ''}`}
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium opacity-0 animate-fade-in">
+              <div className="stamp-badge inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium opacity-0 animate-fade-in">
                 <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                 Leading Property Document Consultants in Wayanad
               </div>
@@ -56,17 +56,33 @@ export default function Hero() {
               </button>
             </div>
 
+            <a
+              href="https://maps.app.goo.gl/RMZbrBDVau8LWG5v7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 opacity-0 animate-fade-in delay-300 hover:opacity-80 transition-opacity"
+            >
+              <div className="flex items-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={16} className="text-gray-900 fill-gray-900" />
+                ))}
+              </div>
+              <span className="text-sm text-gray-700">
+                <span className="font-semibold text-gray-900">5.0</span> on Google · 7 reviews
+              </span>
+            </a>
+
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200 opacity-0 animate-fade-in delay-400">
-              <div className="text-center hover:scale-110 transition-transform duration-300">
+            <div className="grid grid-cols-3 gap-6 pt-10 border-t border-gray-200 opacity-0 animate-fade-in delay-400">
+              <div className="ink-seal text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">500+</div>
                 <div className="text-sm text-gray-600">Happy Clients</div>
               </div>
-              <div className="text-center hover:scale-110 transition-transform duration-300">
+              <div className="ink-seal text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">1000+</div>
                 <div className="text-sm text-gray-600">Documents</div>
               </div>
-              <div className="text-center hover:scale-110 transition-transform duration-300">
+              <div className="ink-seal text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl font-bold text-gray-900">24h</div>
                 <div className="text-sm text-gray-600">Turnaround</div>
               </div>

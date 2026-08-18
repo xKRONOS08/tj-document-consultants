@@ -3,19 +3,10 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-
-
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
@@ -46,53 +37,6 @@ export default function Footer() {
               </a>
               <span className="text-gray-300 text-sm ml-2">Already used our service? <br></br><span className="font-semibold">← Leave us a review</span></span>
             </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
-                >
-                  Land Agreement Drafting
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
-                >
-                  Wills & Trusts
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
-                >
-                  Power of Attorney
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
-                >
-                  Rectification Deeds
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left"
-                >
-                  Property Documentation
-                </button>
-              </li>
-            </ul>
           </div>
 
           {/* Contact Info */}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FileText, Shield, Users, Briefcase, Globe, Award } from 'lucide-react'
 import { useScrollAnimation } from './useScrollAnimation'
 
@@ -42,9 +44,32 @@ const services = [
   }
 ]
 
+function ServiceCard({ service }: { service: typeof services[number] }) {
+  return (
+    <div className="crumpled-paper rounded-2xl p-8 shadow-sm h-full">
+      <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+        <service.icon className="w-8 h-8 text-gray-700" />
+      </div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+      <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+      <ul className="space-y-3">
+        {service.features.map((feature, i) => (
+          <li key={i} className="flex items-center text-sm text-gray-600">
+            <div className="w-2 h-2 bg-gray-400 rounded-full mr-3" />
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export default function Services() {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 })
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 })
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
+  const previewIndex = activeIndex ?? 0
 
   return (
     <section id="services" className="py-20 bg-white">
@@ -53,7 +78,7 @@ export default function Services() {
           ref={headerRef}
           className={`text-center mb-16 scroll-reveal ${headerVisible ? 'visible' : ''}`}
         >
-          <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium mb-4">
+          <div className="stamp-badge inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium mb-4">
             <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
             Our Services
           </div>
@@ -66,67 +91,94 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Mobile: Horizontal Scroll, Desktop: Grid */}
-        <div
-          ref={gridRef}
-          className={`scroll-reveal ${gridVisible ? 'visible' : ''}`}
-        >
-          {/* Mobile horizontal scroll container */}
-          <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
-            <div className="flex gap-6 min-w-max">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 w-[280px] flex-shrink-0"
-                >
-                  <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4 hover:bg-gray-200 transition-colors duration-300">
-                    <service.icon className="w-7 h-7 text-gray-700" />
+        <div ref={gridRef} className={`scroll-reveal ${gridVisible ? 'visible' : ''}`}>
+          {/* Mobile: tap accordion with preview card above the list */}
+          <div className="lg:hidden">
+            <div className="border-t border-gray-200">
+              {services.map((service, index) => {
+                const isActive = activeIndex === index
+                const isDimmed = activeIndex !== null && !isActive
+                return (
+                  <div key={index} className="border-b border-gray-200">
+                    <button
+                      onClick={() => setActiveIndex(isActive ? null : index)}
+                      className={`w-full flex items-center gap-4 py-5 text-left transition-opacity duration-300 ${isDimmed ? 'opacity-40' : 'opacity-100'
+                        }`}
+                    >
+                      <span className={`text-lg font-bold tabular-nums ${isActive ? 'text-gray-900' : 'text-gray-300'}`}>
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className={`text-lg font-semibold ${isActive ? 'text-gray-900' : 'text-gray-500'}`}>
+                        {service.title}
+                      </span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-6">
+                            <ServiceCard service={service} />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
 
-          {/* Desktop grid layout */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-2xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:scale-105"
-              >
-                <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 hover:bg-gray-200 transition-colors duration-300">
-                  <service.icon className="w-8 h-8 text-gray-700" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Desktop: hover index list + live preview card */}
+          <div
+            className="hidden lg:grid lg:grid-cols-2 gap-16 items-start"
+            onMouseLeave={() => setActiveIndex(null)}
+          >
+            <div className="border-t border-gray-200">
+              {services.map((service, index) => {
+                const isActive = previewIndex === index
+                const isDimmed = activeIndex !== null && !isActive
+                return (
+                  <button
+                    key={index}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    className={`w-full flex items-center gap-6 py-6 border-b border-gray-200 text-left transition-opacity duration-300 ${isDimmed ? 'opacity-40' : 'opacity-100'
+                      }`}
+                  >
+                    <span
+                      className={`text-2xl font-bold tabular-nums transition-colors duration-300 ${isActive ? 'text-gray-900' : 'text-gray-300'
+                        }`}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      className={`text-2xl font-bold transition-colors duration-300 ${isActive ? 'text-gray-900' : 'text-gray-500'
+                        }`}
+                    >
+                      {service.title}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+
+            <div className="sticky top-24">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={previewIndex}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                >
+                  <ServiceCard service={services[previewIndex]} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
