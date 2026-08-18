@@ -46,7 +46,7 @@ const services = [
 
 function ServiceCard({ service }: { service: typeof services[number] }) {
   return (
-    <div className="crumpled-paper rounded-2xl p-8 shadow-sm h-full">
+    <div className="bg-white rounded-2xl p-8 shadow-lg ring-1 ring-gray-100 h-full">
       <div className="bg-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
         <service.icon className="w-8 h-8 text-gray-700" />
       </div>

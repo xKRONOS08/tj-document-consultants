@@ -98,11 +98,18 @@ export default function Testimonials() {
     setIndex((prev) => (prev + dir + length) % length)
   }
 
+  // Auto-rotation stays within the written reviews (they lead the array) so the
+  // real quotes always get priority; the rating-only cards remain reachable
+  // manually via the arrows/dots but aren't cycled to automatically.
+  const writtenCount = testimonials.filter((t) => t.quote).length
+
   useEffect(() => {
     if (paused) return
-    const id = setInterval(() => go(1), 5000)
+    const id = setInterval(() => {
+      setIndex((prev) => (prev + 1 < writtenCount ? prev + 1 : 0))
+    }, 5000)
     return () => clearInterval(id)
-  }, [paused, index])
+  }, [paused, writtenCount])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -149,20 +156,23 @@ export default function Testimonials() {
             const offset = getOffset(i, index, length)
             const abs = Math.abs(offset)
             if (abs > 2) return null
-            if (isMobile && abs > 0) return null
+            if (isMobile && abs > 1) return null
             const isCenter = offset === 0
+            const xOffset = isMobile ? 60 : 210
+            const rotation = isMobile ? -16 : -28
 
             return (
               <motion.div
                 key={t.name + i}
-                className="absolute inset-x-0 top-0 mx-auto w-full max-w-md h-full bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-10 flex flex-col justify-between"
+                className={`absolute inset-x-0 top-0 mx-auto h-full bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-10 flex flex-col justify-between ${isMobile ? 'w-[84%]' : 'w-full max-w-md'
+                  }`}
                 style={{ zIndex: 10 - abs, cursor: isCenter ? 'grab' : 'default' }}
                 animate={{
-                  x: isMobile ? 0 : offset * 210,
-                  rotateY: isMobile ? 0 : offset * -28,
-                  scale: isMobile ? 1 : 1 - abs * 0.12,
-                  opacity: abs > 2 ? 0 : 1 - abs * 0.3,
-                  filter: isMobile ? 'blur(0px)' : `blur(${abs * 1.5}px)`,
+                  x: offset * xOffset,
+                  rotateY: offset * rotation,
+                  scale: 1 - abs * (isMobile ? 0.16 : 0.12),
+                  opacity: abs > (isMobile ? 1 : 2) ? 0 : 1 - abs * (isMobile ? 0.55 : 0.3),
+                  filter: `blur(${abs * (isMobile ? 2.5 : 1.5)}px)`,
                 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 30 }}
                 drag={isCenter ? 'x' : false}
